@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 120" fill="none" aria-hidden="true">
+  <!-- plate -->
+  <ellipse cx="72" cy="82" rx="44" ry="12" fill="#E8F3EE"/>
+  <circle cx="72" cy="58" r="34" fill="#F5F7F6" stroke="#D7E0DB" stroke-width="2.5"/>
+  <circle cx="72" cy="58" r="24" fill="#FFFFFF" stroke="#D7E0DB" stroke-width="1.5"/>
+  <!-- simple meal shapes -->
+  <ellipse cx="66" cy="56" rx="10" ry="7" fill="#1F6B57" opacity="0.8"/>
+  <circle cx="80" cy="52" r="6" fill="#C45C4A"/>
+  <rect x="74" y="60" width="14" height="5" rx="2.5" fill="#E09A3E"/>
+  <!-- fork -->
+  <g stroke="#5B6B64" stroke-width="2" stroke-linecap="round">
+    <path d="M118 28v22"/>
+    <path d="M113 28v10"/>
+    <path d="M123 28v10"/>
+    <path d="M118 50v28"/>
+  </g>
+  <!-- spoon -->
+  <g fill="none" stroke="#5B6B64" stroke-width="2" stroke-linecap="round">
+    <ellipse cx="136" cy="34" rx="7" ry="9"/>
+    <path d="M136 43v35"/>
+  </g>
+</svg>

@@ -9,7 +9,6 @@ import { DashboardSkeleton } from "../components/dashboard/DashboardSkeleton.jsx
 import { GoalProgress } from "../components/dashboard/GoalProgress.jsx";
 import { MacroSummary } from "../components/dashboard/MacroSummary.jsx";
 import { MealSummary } from "../components/dashboard/MealSummary.jsx";
-import { QuickActions } from "../components/dashboard/QuickActions.jsx";
 import { WeeklyCaloriesChart } from "../components/dashboard/WeeklyCaloriesChart.jsx";
 import { Alert } from "../components/ui/Alert.jsx";
 import { Button } from "../components/ui/Button.jsx";
@@ -134,23 +133,60 @@ export default function Dashboard() {
 
   return (
     <div className="mx-auto max-w-6xl space-y-6">
-      <header className="space-y-2">
-        <h1 className="font-display text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
-          {isNewUser
-            ? `Welcome, ${user?.name?.split(" ")[0] || "there"}.`
-            : `Hello, ${user?.name?.split(" ")[0] || "there"}.`}
-        </h1>
-        <p className="text-sm text-muted sm:text-base">
-          {formatDisplayDate(today)} · Here&apos;s your nutrition overview for
-          today.
-        </p>
-        {isNewUser ? (
-          <p className="max-w-2xl text-sm text-muted">
-            Set your nutrition goals and log your first meal to start tracking
-            your progress.
-          </p>
-        ) : null}
-      </header>
+      <section className="overflow-hidden rounded-xl border border-line bg-surface shadow-sm">
+        <div className="grid items-center gap-6 p-5 sm:p-6 lg:grid-cols-5 lg:gap-8">
+          <div className="space-y-4 lg:col-span-3">
+            <div className="space-y-2">
+              <h1 className="font-display text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
+                {isNewUser
+                  ? `Welcome, ${user?.name?.split(" ")[0] || "there"}.`
+                  : `Hello, ${user?.name?.split(" ")[0] || "there"}.`}
+              </h1>
+              <p className="text-sm text-muted sm:text-base">
+                {formatDisplayDate(today)} · Here&apos;s your nutrition overview
+                for today.
+              </p>
+              <p className="max-w-xl text-sm text-muted">
+                {isNewUser
+                  ? "Set your nutrition goals and log your first meal to start tracking your progress."
+                  : "Track your nutrition and stay consistent with your goals."}
+              </p>
+            </div>
+
+            <div className="flex flex-wrap gap-3">
+              <Link
+                to="/meals"
+                className="inline-flex items-center justify-center rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-white hover:bg-primary-hover"
+              >
+                Add meal
+              </Link>
+              <Link
+                to="/reports"
+                className="inline-flex items-center justify-center rounded-lg border border-line bg-surface px-4 py-2.5 text-sm font-semibold text-ink hover:bg-primary-soft"
+              >
+                View reports
+              </Link>
+              <Link
+                to="/goals"
+                className="inline-flex items-center justify-center rounded-lg border border-line bg-surface px-4 py-2.5 text-sm font-semibold text-ink hover:bg-primary-soft"
+              >
+                Edit goals
+              </Link>
+            </div>
+          </div>
+
+          <div className="lg:col-span-2">
+            <img
+              src="/dashboard-hero-food.png"
+              alt="Healthy balanced meal"
+              width="640"
+              height="480"
+              className="h-44 w-full rounded-xl object-cover sm:h-52 lg:h-56"
+              decoding="async"
+            />
+          </div>
+        </div>
+      </section>
 
       {goalsMissing ? (
         <Alert tone="info" title="Goals not set yet">
@@ -181,8 +217,6 @@ export default function Dashboard() {
           <MacroSummary totals={totals} goals={goals} />
         </div>
       </div>
-
-      <QuickActions />
 
       <div className="grid gap-4 lg:grid-cols-2">
         <MealSummary meals={meals} byMealType={daily?.byMealType} />

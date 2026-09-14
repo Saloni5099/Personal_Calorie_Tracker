@@ -38,8 +38,16 @@ export function MealSummary({ meals, byMealType }) {
       </div>
 
       {!hasAny ? (
-        <div className="mt-6 rounded-lg border border-dashed border-line bg-canvas/60 px-4 py-6">
-          <p className="font-medium text-ink">Your day is empty.</p>
+        <div className="mt-6 rounded-lg border border-dashed border-line bg-canvas/60 px-4 py-6 text-center">
+          <img
+            src="/dashboard-food-illustration.svg"
+            alt=""
+            width="140"
+            height="105"
+            className="mx-auto h-20 w-auto sm:h-24"
+            decoding="async"
+          />
+          <p className="mt-4 font-medium text-ink">Your day is empty.</p>
           <p className="mt-1 text-sm text-muted">
             Add your first meal to start tracking.
           </p>

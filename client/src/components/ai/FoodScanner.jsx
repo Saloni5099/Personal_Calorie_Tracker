@@ -222,9 +222,24 @@ export function FoodScanner({ open, onClose, onAnalyzed, onAuthError }) {
               ) : null}
             </div>
           ) : (
-            <div className="rounded-xl border border-dashed border-line bg-canvas/60 px-4 py-8 text-center text-sm text-muted">
-              Choose an image to preview it here. Nothing is uploaded until you
-              click Analyze image.
+            <div className="rounded-xl border border-dashed border-line bg-canvas/60 px-4 py-8 text-center">
+              <img
+                src="/scan-food-illustration.svg"
+                alt=""
+                width="160"
+                height="124"
+                className="mx-auto h-24 w-auto sm:h-28"
+                decoding="async"
+              />
+              <p className="mt-4 font-display text-base font-semibold text-ink">
+                Scan Your Food
+              </p>
+              <p className="mx-auto mt-1.5 max-w-xs text-sm text-muted">
+                Upload a photo of your meal or nutrition label
+              </p>
+              <p className="mt-3 text-xs text-muted">
+                Nothing is uploaded until you click Analyze image.
+              </p>
             </div>
           )}
 

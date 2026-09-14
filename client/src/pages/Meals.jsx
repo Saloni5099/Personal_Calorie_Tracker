@@ -288,7 +288,15 @@ export default function Meals() {
         <Spinner label="Loading meals…" />
       ) : !error && meals.length === 0 ? (
         <section className="rounded-xl border border-dashed border-line bg-surface px-5 py-10 text-center">
-          <p className="font-display text-lg font-semibold text-ink">
+          <img
+            src="/meals-empty-illustration.svg"
+            alt=""
+            width="150"
+            height="112"
+            className="mx-auto h-20 w-auto sm:h-24"
+            decoding="async"
+          />
+          <p className="mt-4 font-display text-lg font-semibold text-ink">
             No meals found
           </p>
           <p className="mx-auto mt-2 max-w-md text-sm text-muted">
