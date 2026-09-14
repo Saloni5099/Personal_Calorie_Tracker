@@ -72,3 +72,19 @@ export async function getMicrosReport(req, res, next) {
     next(error);
   }
 }
+
+export async function getStreakReport(req, res, next) {
+  try {
+    const streak = await reportService.getStreakReport(req.userId);
+
+    res.status(200).json({
+      success: true,
+      data: {
+        currentStreak: streak.currentStreak,
+        longestStreak: streak.longestStreak,
+      },
+    });
+  } catch (error) {
+    next(error);
+  }
+}

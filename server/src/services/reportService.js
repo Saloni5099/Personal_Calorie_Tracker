@@ -3,6 +3,7 @@ import {
   eachUtcDateInclusive,
   endOfUtcDay,
   startOfUtcDay,
+  todayUtcDateString,
   toUtcDateString,
 } from "../utils/dates.js";
 
@@ -302,5 +303,78 @@ export async function getMicrosReport(userId, startDate, endDate) {
     range: { startDate, endDate },
     totals: roundMicroTotals(sumMicros(entries)),
     daily,
+  };
+}
+
+function shiftUtcDateString(dateStr, dayDelta) {
+  const date = startOfUtcDay(dateStr);
+  date.setUTCDate(date.getUTCDate() + dayDelta);
+  return toUtcDateString(date);
+}
+
+function countConsecutiveDaysBackward(daySet, startDate) {
+  let streak = 0;
+  let cursor = startDate;
+
+  while (daySet.has(cursor)) {
+    streak += 1;
+    cursor = shiftUtcDateString(cursor, -1);
+  }
+
+  return streak;
+}
+
+function longestConsecutiveStreak(sortedDays) {
+  if (sortedDays.length === 0) {
+    return 0;
+  }
+
+  let longest = 1;
+  let run = 1;
+
+  for (let i = 1; i < sortedDays.length; i += 1) {
+    const prev = sortedDays[i - 1];
+    const curr = sortedDays[i];
+    if (curr === shiftUtcDateString(prev, 1)) {
+      run += 1;
+      longest = Math.max(longest, run);
+    } else {
+      run = 1;
+    }
+  }
+
+  return longest;
+}
+
+/**
+ * Meal logging streak for one user (UTC calendar days via consumedAt).
+ * A day counts when the user has ≥1 FoodEntry that day.
+ * If today has no meal yet, current streak may still continue from yesterday.
+ */
+export async function getStreakReport(userId) {
+  const entries = await prisma.foodEntry.findMany({
+    where: { userId },
+    select: { consumedAt: true },
+    orderBy: { consumedAt: "asc" },
+  });
+
+  const daySet = new Set(
+    entries.map((entry) => toUtcDateString(entry.consumedAt)),
+  );
+  const sortedDays = [...daySet].sort();
+
+  const today = todayUtcDateString();
+  const yesterday = shiftUtcDateString(today, -1);
+
+  let currentStreak = 0;
+  if (daySet.has(today)) {
+    currentStreak = countConsecutiveDaysBackward(daySet, today);
+  } else if (daySet.has(yesterday)) {
+    currentStreak = countConsecutiveDaysBackward(daySet, yesterday);
+  }
+
+  return {
+    currentStreak,
+    longestStreak: longestConsecutiveStreak(sortedDays),
   };
 }

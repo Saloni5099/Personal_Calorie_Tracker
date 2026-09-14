@@ -10,5 +10,6 @@ router.get("/daily", reportController.getDailyReport);
 router.get("/weekly", reportController.getWeeklyReport);
 router.get("/macros", reportController.getMacrosReport);
 router.get("/micros", reportController.getMicrosReport);
+router.get("/streak", reportController.getStreakReport);
 
 export default router;

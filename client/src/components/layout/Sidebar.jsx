@@ -10,11 +10,10 @@ const navItems = [
 export function Sidebar({ onNavigate }) {
   return (
     <aside className="flex h-full w-64 flex-col border-r border-line bg-surface">
-      <div className="border-b border-line px-5 py-5">
-        <p className="font-display text-lg font-semibold tracking-tight text-ink">
-          Nourish
+      <div className="border-b border-line px-5 py-4 lg:py-5">
+        <p className="text-xs font-semibold uppercase tracking-wide text-muted">
+          Navigation
         </p>
-        <p className="mt-1 text-sm text-muted">Personal Calorie Tracker</p>
       </div>
 
       <nav className="flex-1 space-y-1 p-3" aria-label="Main">
