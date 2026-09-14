@@ -1,0 +1,71 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum MealType {
+  BREAKFAST
+  LUNCH
+  DINNER
+  SNACK
+}
+
+model User {
+  id           Int         @id @default(autoincrement())
+  name         String
+  email        String      @unique
+  passwordHash String
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+
+  goal         Goal?
+  foodEntries  FoodEntry[]
+}
+
+model Goal {
+  id            Int      @id @default(autoincrement())
+  userId        Int      @unique
+  dailyCalories Float
+  proteinTarget Float
+  carbsTarget   Float
+  fatTarget     Float
+  weightGoal    Float?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model FoodEntry {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  foodName  String
+  mealType  MealType
+  quantity  Float
+  unit      String
+
+  calories  Float
+  protein   Float
+  carbs     Float
+  fat       Float
+
+  vitaminA  Float?
+  vitaminC  Float?
+  vitaminD  Float?
+  calcium   Float?
+  iron      Float?
+
+  consumedAt DateTime @default(now())
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([createdAt])
+  @@index([userId, consumedAt])
+}

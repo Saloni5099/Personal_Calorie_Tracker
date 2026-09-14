@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Source Sans 3", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Sora", ui-sans-serif, system-ui, sans-serif;
+
+  --color-canvas: #f5f7f6;
+  --color-surface: #ffffff;
+  --color-ink: #1a2421;
+  --color-muted: #5b6b64;
+  --color-line: #d7e0db;
+  --color-primary: #1f6b57;
+  --color-primary-hover: #185546;
+  --color-primary-soft: #e8f3ee;
+  --color-success: #1f7a4c;
+  --color-warning: #9a6700;
+  --color-danger: #b42318;
+  --color-danger-soft: #fef3f2;
+}
+
+@layer base {
+  html {
+    @apply h-full;
+  }
+
+  body {
+    @apply min-h-full bg-canvas font-sans text-ink antialiased;
+  }
+
+  #root {
+    @apply min-h-full;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-primary;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+}
