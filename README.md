@@ -31,6 +31,7 @@ This project helps users manage nutrition with a clear review-before-save workfl
 - **Goal vs actual tracking** — compare logged intake against personal goals
 - **Dashboard with charts** — summary views powered by Recharts
 - **AI food image analysis** — upload a label or plate photo; backend analyzes with Gemini and returns structured nutrition suggestions
+- **Meal logging streak** — current and longest consecutive days with meals, shown in the header
 - **Responsive UI** — usable on desktop and mobile viewports
 - **Input validation and error handling** — Zod on the API; form validation on the client
 - **User data isolation** — meals, goals, and reports are scoped to the authenticated user
@@ -157,6 +158,7 @@ Authorization: Bearer <token>
 | GET | `/api/reports/weekly` | Yes |
 | GET | `/api/reports/macros` | Yes |
 | GET | `/api/reports/micros` | Yes |
+| GET | `/api/reports/streak` | Yes |
 
 Report endpoints accept optional date query parameters (`date` for daily; `startDate` / `endDate` for weekly/macros/micros).
 
