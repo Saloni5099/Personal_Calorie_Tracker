@@ -18,6 +18,11 @@ This project helps users manage nutrition with a clear review-before-save workfl
 
 ---
 
+## Demo Video google drive link : 
+
+https://drive.google.com/file/d/1FAVgeudHfKZ-_9MbHT8fWe7Jazo8XVS9/view?usp=sharing
+
+
 ## Features
 
 - **Authentication and authorization** — register/login with JWT Bearer tokens; passwords hashed with bcryptjs
