@@ -12,29 +12,29 @@ function toQuery(params = {}) {
 }
 
 export function getMeals(params = {}) {
-  return apiRequest(`/meals${toQuery(params)}`);
+  return apiRequest(`/api/meals${toQuery(params)}`);
 }
 
 export function getMealById(id) {
-  return apiRequest(`/meals/${id}`);
+  return apiRequest(`/api/meals/${id}`);
 }
 
 export function createMeal(data) {
-  return apiRequest("/meals", {
+  return apiRequest("/api/meals", {
     method: "POST",
     body: data,
   });
 }
 
 export function updateMeal(id, data) {
-  return apiRequest(`/meals/${id}`, {
+  return apiRequest(`/api/meals/${id}`, {
     method: "PUT",
     body: data,
   });
 }
 
 export function deleteMeal(id) {
-  return apiRequest(`/meals/${id}`, {
+  return apiRequest(`/api/meals/${id}`, {
     method: "DELETE",
   });
 }

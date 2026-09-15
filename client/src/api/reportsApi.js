@@ -12,17 +12,17 @@ function toQuery(params = {}) {
 }
 
 export function getDailyReport(params = {}) {
-  return apiRequest(`/reports/daily${toQuery(params)}`);
+  return apiRequest(`/api/reports/daily${toQuery(params)}`);
 }
 
 export function getWeeklyReport(params = {}) {
-  return apiRequest(`/reports/weekly${toQuery(params)}`);
+  return apiRequest(`/api/reports/weekly${toQuery(params)}`);
 }
 
 export function getMacrosReport(params = {}) {
-  return apiRequest(`/reports/macros${toQuery(params)}`);
+  return apiRequest(`/api/reports/macros${toQuery(params)}`);
 }
 
 export function getMicrosReport(params = {}) {
-  return apiRequest(`/reports/micros${toQuery(params)}`);
+  return apiRequest(`/api/reports/micros${toQuery(params)}`);
 }

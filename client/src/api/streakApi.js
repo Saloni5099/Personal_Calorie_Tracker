@@ -5,5 +5,5 @@ import { apiRequest } from "./client.js";
  * Expects: { success: true, data: { currentStreak, longestStreak } }
  */
 export function getStreak() {
-  return apiRequest("/reports/streak");
+  return apiRequest("/api/reports/streak");
 }

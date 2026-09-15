@@ -4,7 +4,7 @@ export function analyzeFoodImage(file) {
   const formData = new FormData();
   formData.append("image", file);
 
-  return apiRequest("/ai/analyze-food", {
+  return apiRequest("/api/ai/analyze-food", {
     method: "POST",
     body: formData,
   });
