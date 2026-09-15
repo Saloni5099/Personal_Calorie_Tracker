@@ -21,7 +21,7 @@ This project helps users manage nutrition with a clear review-before-save workfl
 ## Demo Video google drive link : 
 
 https://drive.google.com/file/d/1FAVgeudHfKZ-_9MbHT8fWe7Jazo8XVS9/view?usp=sharing
-
+ 
 
 ## Features
 
@@ -40,6 +40,11 @@ https://drive.google.com/file/d/1FAVgeudHfKZ-_9MbHT8fWe7Jazo8XVS9/view?usp=shari
 - **Responsive UI** — usable on desktop and mobile viewports
 - **Input validation and error handling** — Zod on the API; form validation on the client
 - **User data isolation** — meals, goals, and reports are scoped to the authenticated user
+
+
+## Live Demo :  
+
+https://nourish-ct.vercel.app
 
 ---
 
