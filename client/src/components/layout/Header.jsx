@@ -171,10 +171,10 @@ export function Header({ onMenuClick }) {
             <LeafLogo className="h-8 w-8 shrink-0 sm:h-9 sm:w-9" />
             <div className="min-w-0 leading-tight">
               <p className="font-display truncate text-base font-bold tracking-tight text-ink sm:text-lg">
-                NutriTrack
+                Nourish
               </p>
               <p className="truncate text-xs text-muted sm:text-sm">
-                Calorie Tracker
+                Personal Calorie Tracker
               </p>
             </div>
           </div>
