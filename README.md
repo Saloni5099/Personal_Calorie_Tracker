@@ -167,20 +167,6 @@ Authorization: Bearer <token>
 
 Report endpoints accept optional date query parameters (`date` for daily; `startDate` / `endDate` for weekly/macros/micros).
 
-### AI
-
-| Method | Endpoint | Auth |
-|--------|----------|------|
-| POST | `/api/ai/analyze-food` | Yes |
-
-Multipart field name: `image`.
-
-### Health
-
-| Method | Endpoint | Auth |
-|--------|----------|------|
-| GET | `/api/health` | No |
-
 ---
 
 ## Setup Instructions
@@ -194,7 +180,7 @@ Multipart field name: `image`.
 ### 1. Clone the repository
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/Saloni5099/Personal_Calorie_Tracker
 cd Personal_Calorie_Tracker_Typeface
 ```
 
@@ -225,7 +211,7 @@ cd ../server
 cp .env.example .env
 ```
 
-`server/.env` (placeholders only — never commit real secrets):
+`server/.env` (placeholders only):
 
 ```env
 DATABASE_URL=your_postgresql_connection_string
@@ -291,7 +277,7 @@ Start the Vite dev server:
 npm run dev
 ```
 
-Open the URL shown in the terminal (typically `http://localhost:5173`).
+Open the URL shown in the terminal (`http://localhost:5173`).
 
 **Production frontend build:**
 
@@ -339,32 +325,3 @@ Personal_Calorie_Tracker_Typeface/
 ```
 
 ---
-
-## Testing / Verification
-
-This repository does **not** include an automated test suite (`npm test` on the server is a placeholder).
-
-Recommended manual verification:
-
-1. Register and log in; confirm `/api/auth/me` works with the JWT.
-2. Create goals; confirm they appear on the Goals page and Dashboard.
-3. Add / edit / delete meals; confirm filters and pagination.
-4. Open Reports and Dashboard charts with logged data.
-5. Upload a plate image via Scan Food → confirm quantity `1` / unit `serving` and the estimate notice → edit → save via Meals API.
-6. Upload a nutrition-label image when available → confirm serving size extraction when printed on the label.
-7. Confirm AI scanning fails gracefully if `GEMINI_API_KEY` is missing.
-8. Run `npm run build` in `client/` and `npm start` in `server/` successfully.
-
----
-
-## Future Improvements
-
-Possible follow-ups (not required for the current assignment scope): broader micronutrient coverage, richer report date presets, and stronger automated tests.
-
----
-
-## Security Notes
-
-- Keep `server/.env` and `client/.env` out of version control (covered by `.gitignore`).
-- Never put `GEMINI_API_KEY` or `JWT_SECRET` in frontend code or `VITE_*` variables.
-- Use placeholders only in `.env.example` files.
